@@ -5,9 +5,9 @@ from zipfile import ZipFile
 import pandas as pd
 from sqlalchemy import create_engine
 
-schema_json = '/Users/farha/Downloads/GitClone/digitalskola/project_3_de/sql/schemas/user_address.json'
+schema_json = '/Users/farha/Documents/tutorial_python/project_3_de/sql/schemas/user_address.json' 
 create_schema_sql = """ create table user_address_2018_snapshots {} """
-zip_small_file = '/Users/farha/Downloads/GitClone/digitalskola/project_3_de/temp/dataset-small.zip'
+zip_small_file = '/Users/farha/Documents/tutorial_python/project_3_de/temp/dataset-small.zip'
 small_file_name = 'dataset-small.csv'
 database='shipping_orders'
 user='postgres'
@@ -70,7 +70,7 @@ df_filtered = df[(df['created_at'] >= '2018-02-01') & (df['created_at'] < '2018-
 #create engine
 engine = create_engine(f'postgresql://{user}:{password}@{host}:{port}/{database}')
 
-#insert to postgres
+#insert to postgres 
 df_filtered.to_sql(table_name, engine, if_exists='replace', index=False)
 print(f'Total inserted rows: {len(df_filtered)}')
 print(f'Initial created_at: {df_filtered.created_at.min()}')
